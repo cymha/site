@@ -1,0 +1,177 @@
+---
+import Layout from '../layouts/Layout.astro'
+
+const examInfo = [
+  { label: '考试名称', value: '【待补】', placeholder: true },
+  { label: '主办/认证单位', value: '【待补】', placeholder: true },
+  {
+    label: '适合对象',
+    value: '【待补：如教育工作者、辅导人员、社工、家长、大学生、在职人士等】',
+    placeholder: true,
+  },
+  {
+    label: '考试形式',
+    value: '【待补：线上/线下；笔试/面试/作业；考试语言】',
+    placeholder: true,
+  },
+  { label: '考试日期', value: '【待补】', placeholder: true },
+  { label: '报名截止', value: '【待补】', placeholder: true },
+  { label: '费用', value: '【待补】', placeholder: true },
+  {
+    label: '证书/认证说明',
+    value: '【待补：证书名称、用途、有效期（如有）】',
+    placeholder: true,
+  },
+]
+
+const steps = [
+  '填写报名表并提交所需资料',
+  '完成缴费（如适用）',
+  '收到报名确认通知与考试安排',
+  '按指引参加考试（领取准考证或登录信息）',
+  '成绩公布与证书发放（如适用）',
+]
+
+const faqs = [
+  {
+    question: '没有心理学背景可以报名吗？',
+    answer:
+      '多数考核会提供入门路径。建议先查看报考要求；如不确定，可先提交咨询，我们会协助确认是否适合报名。',
+  },
+  {
+    question: '可以改期或退费吗？',
+    answer: '【待补：退改政策，例如报名后 X 天内可退、考试前 Y 天可改期等】',
+    placeholder: true,
+  },
+  {
+    question: '是否提供备考资源或课程？',
+    answer:
+      '我们提供系统化专业培训课程（如游戏治疗、儿童青少年心理咨询、学生精神健康课程等），可按需要选择学习与配套支持。',
+  },
+]
+---
+
+<Layout
+  title="心理学考试报名"
+  description="心理学专业培训与考核报名，获取最新考试安排与备考建议"
+>
+  <!-- Hero -->
+  <section class="bg-primary-light py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <span
+        class="text-primary text-sm font-semibold tracking-wider uppercase mb-3 block"
+        >考试</span
+      >
+      <h1 class="text-3xl md:text-4xl font-bold text-text mb-4">
+        心理学考试报名
+      </h1>
+      <p class="text-text-light text-lg max-w-2xl leading-relaxed">
+        为协助有志投身心理相关领域的人士建立更系统的知识与能力，我们提供专业的培训与考核信息整合服务。你可通过本页面完成报名或咨询，并获取最新考试安排与备考建议。
+      </p>
+    </div>
+  </section>
+
+  <!-- Exam Info -->
+  <section class="py-20">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-2xl font-bold text-text mb-8">考试信息</h2>
+      <div class="bg-white border border-gray-100 rounded-2xl overflow-hidden">
+        {
+          examInfo.map((item, i) => (
+            <div
+              class={`flex flex-col sm:flex-row sm:items-center px-6 py-4 ${i !== examInfo.length - 1 ? 'border-b border-gray-50' : ''}`}
+            >
+              <div class="sm:w-40 shrink-0 mb-1 sm:mb-0">
+                <span class="text-sm font-semibold text-text">
+                  {item.label}
+                </span>
+              </div>
+              <span
+                class={`text-sm ${item.placeholder ? 'text-text-muted' : 'text-text-light'}`}
+              >
+                {item.value}
+              </span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Steps -->
+  <section class="py-20 bg-secondary">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-2xl font-bold text-text mb-10 text-center">报名流程</h2>
+      <div class="relative">
+        <!-- Timeline line -->
+        <div
+          class="absolute left-6 top-0 bottom-0 w-0.5 bg-primary/20 hidden sm:block"
+        >
+        </div>
+
+        <div class="space-y-6">
+          {
+            steps.map((step, i) => (
+              <div class="flex items-start gap-4 sm:gap-6">
+                <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center shrink-0 text-white font-bold text-sm z-10">
+                  {i + 1}
+                </div>
+                <div class="bg-white rounded-xl p-5 flex-1 shadow-sm">
+                  <p class="text-text-light">{step}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-2xl font-bold text-text mb-10 text-center">常见问题</h2>
+      <div class="space-y-4">
+        {
+          faqs.map((faq) => (
+            <div class="bg-white border border-gray-100 rounded-2xl p-6">
+              <h3 class="font-semibold text-text mb-3 flex items-start gap-3">
+                <span class="text-primary font-bold shrink-0">Q</span>
+                <span>{faq.question}</span>
+              </h3>
+              <p
+                class={`text-sm leading-relaxed pl-7 ${faq.placeholder ? 'text-text-muted' : 'text-text-light'}`}
+              >
+                {faq.answer}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-primary">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-2xl font-bold text-white mb-8">准备好开始了吗？</h2>
+      <div class="flex flex-wrap justify-center gap-4">
+        <button
+          class="px-8 py-4 bg-white text-primary rounded-xl font-medium hover:bg-gray-100 transition-colors"
+        >
+          立即报名
+        </button>
+        <button
+          class="px-8 py-4 bg-white/10 text-white border border-white/20 rounded-xl font-medium hover:bg-white/20 transition-colors"
+        >
+          报名资格咨询
+        </button>
+        <button
+          class="px-8 py-4 bg-white/10 text-white border border-white/20 rounded-xl font-medium hover:bg-white/20 transition-colors"
+        >
+          索取考试详情
+        </button>
+      </div>
+    </div>
+  </section>
+</Layout>

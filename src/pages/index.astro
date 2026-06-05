@@ -1,17 +1,345 @@
 ---
-
+import Layout from '../layouts/Layout.astro'
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
-  </head>
-  <body>
-    <h1>Astro</h1>
-  </body>
-</html>
+<Layout title="首页">
+  <!-- Hero Section -->
+  <section class="relative bg-primary-light overflow-hidden">
+    <div class="absolute inset-0 opacity-30">
+      <svg
+        class="w-full h-full"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+      >
+        <defs>
+          <pattern
+            id="dots"
+            x="0"
+            y="0"
+            width="20"
+            height="20"
+            patternUnits="userSpaceOnUse"
+          >
+            <circle cx="2" cy="2" r="1" fill="#2a7a6e" opacity="0.15"></circle>
+          </pattern>
+        </defs>
+        <rect width="100" height="100" fill="url(#dots)"></rect>
+      </svg>
+    </div>
+
+    <div class="relative max-w-6xl mx-auto px-6 py-24 md:py-32">
+      <div class="max-w-2xl">
+        <div
+          class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 border border-primary/10 text-primary text-xs font-medium mb-6"
+        >
+          <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"
+          ></span>
+          香港注册非牟利社会团体
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold text-text leading-tight mb-6">
+          香港儿童青年<br />心理健康协会
+        </h1>
+        <p class="text-lg text-text-light leading-relaxed mb-8 max-w-xl">
+          连接学术与实践的心理专业平台，整合社会资源，全面促进儿童及青年的心理健康。
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a
+            href="/services"
+            class="px-6 py-3 bg-primary text-white rounded-xl font-medium text-sm hover:bg-primary-dark transition-colors shadow-lg shadow-primary/20"
+          >
+            了解我们的服务
+          </a>
+          <a
+            href="/team"
+            class="px-6 py-3 bg-white text-primary border border-primary/20 rounded-xl font-medium text-sm hover:bg-primary-light transition-colors"
+          >
+            认识专业团队
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="py-20 md:py-28">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-12 items-start">
+        <div>
+          <span
+            class="text-primary text-sm font-semibold tracking-wider uppercase mb-3 block"
+            >关于协会</span
+          >
+          <h2 class="text-3xl font-bold text-text mb-6">协会简介</h2>
+          <div class="space-y-4 text-text-light leading-relaxed">
+            <p>
+              香港儿童青年心理健康协会为依法设立、非以牟利为目的之社会团体。协会致力整合社会各界资源，搭建一个连接学术研究与应用服务的心理专业平台，透过更系统、更可及的心理支持，全面促进儿童与青少年的心理健康，推动更幸福、友善与具支持力的社会环境。
+            </p>
+            <p>
+              近年来，儿童青少年的精神心理困扰发生率持续上升，心理健康问题呈现「低龄化」趋势。孩子在学业压力、家庭与学校期望、社会环境快速变化，以及科技与信息爆炸等多重挑战之下，容易出现焦虑、情绪困扰、自我认同迷茫等问题。疫情后重新适应学习与社交节奏，也可能进一步加重压力与情绪负担。
+            </p>
+            <p>
+              我们期望透过专业心理辅导、家庭与社区活动，协助儿童青少年建立健康的心理素质与更坚韧的应对能力。同时，我们也希望在社会各界共同努力与支持下，为儿童和青少年提供一个更安全、包容且充满机会的环境，帮助他们克服挑战、健康成长并充分发挥潜能。
+            </p>
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          <!-- Mission Card -->
+          <div class="bg-secondary rounded-2xl p-8">
+            <div
+              class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4"
+            >
+              <svg
+                class="w-5 h-5 text-primary"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-text text-lg mb-3">宗旨</h3>
+            <ul class="space-y-2 text-text-light text-sm">
+              <li class="flex items-start gap-2">
+                <span class="w-1 h-1 rounded-full bg-primary mt-2 shrink-0"
+                ></span>
+                <span>整合社会各界资源，提供心理专业支持与服务</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="w-1 h-1 rounded-full bg-primary mt-2 shrink-0"
+                ></span>
+                <span>建立连接学术与应用的专业平台，促进儿童及青年心理健康</span
+                >
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="w-1 h-1 rounded-full bg-primary mt-2 shrink-0"
+                ></span>
+                <span>推动社会共同关注与支持，迈向幸福社会</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Values Card -->
+          <div class="bg-primary-light rounded-2xl p-8">
+            <div
+              class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4"
+            >
+              <svg
+                class="w-5 h-5 text-primary"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-text text-lg mb-4">核心价值观</h3>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="bg-white rounded-xl p-4 text-center">
+                <div class="font-semibold text-primary text-sm mb-1">专业</div>
+                <div class="text-xs text-text-muted">
+                  以科学证据与专业伦理为基础
+                </div>
+              </div>
+              <div class="bg-white rounded-xl p-4 text-center">
+                <div class="font-semibold text-primary text-sm mb-1">仁爱</div>
+                <div class="text-xs text-text-muted">
+                  以关怀与同理支持每一位有需要的人
+                </div>
+              </div>
+              <div class="bg-white rounded-xl p-4 text-center">
+                <div class="font-semibold text-primary text-sm mb-1">尊重</div>
+                <div class="text-xs text-text-muted">
+                  尊重个体差异、成长节奏与家庭文化
+                </div>
+              </div>
+              <div class="bg-white rounded-xl p-4 text-center">
+                <div class="font-semibold text-primary text-sm mb-1">包容</div>
+                <div class="text-xs text-text-muted">
+                  营造安全、接纳与不评判的支持环境
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Overview -->
+  <section class="py-20 bg-secondary">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <span
+          class="text-primary text-sm font-semibold tracking-wider uppercase mb-3 block"
+          >服务范畴</span
+        >
+        <h2 class="text-3xl font-bold text-text">服务对象与范围</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div class="bg-white rounded-2xl p-6 hover:shadow-lg transition-shadow">
+          <div
+            class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4"
+          >
+            <svg
+              class="w-6 h-6 text-primary"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-text mb-2">心理健康服务</h3>
+          <p class="text-sm text-text-muted leading-relaxed">
+            儿童及青少年心理健康评估、辅导与治疗
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 hover:shadow-lg transition-shadow">
+          <div
+            class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4"
+          >
+            <svg
+              class="w-6 h-6 text-primary"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-text mb-2">专业培训课程</h3>
+          <p class="text-sm text-text-muted leading-relaxed">
+            游戏治疗、儿童心理咨询、学生精神健康等课程
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 hover:shadow-lg transition-shadow">
+          <div
+            class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4"
+          >
+            <svg
+              class="w-6 h-6 text-primary"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-text mb-2">讲座及工作坊</h3>
+          <p class="text-sm text-text-muted leading-relaxed">
+            亲子沟通讲座、艺术疗愈工作坊等
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 hover:shadow-lg transition-shadow">
+          <div
+            class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4"
+          >
+            <svg
+              class="w-6 h-6 text-primary"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="font-semibold text-text mb-2">学术交流</h3>
+          <p class="text-sm text-text-muted leading-relaxed">
+            研究发表、国际会议、专业组织交流平台
+          </p>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-3">
+        <a
+          href="/services"
+          class="px-6 py-3 bg-primary text-white rounded-xl font-medium text-sm hover:bg-primary-dark transition-colors"
+        >
+          了解辅导与治疗服务
+        </a>
+        <a
+          href="/exam"
+          class="px-6 py-3 bg-white text-text border border-gray-200 rounded-xl font-medium text-sm hover:bg-gray-50 transition-colors"
+        >
+          查询培训课程
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Target Audience -->
+  <section class="py-20">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <span
+        class="text-primary text-sm font-semibold tracking-wider uppercase mb-3 block"
+        >服务对象</span
+      >
+      <h2 class="text-3xl font-bold text-text mb-8">我们服务的对象</h2>
+      <div class="flex flex-wrap justify-center gap-4">
+        <div
+          class="px-6 py-3 bg-primary-light rounded-full text-primary font-medium text-sm"
+        >
+          儿童
+        </div>
+        <div
+          class="px-6 py-3 bg-primary-light rounded-full text-primary font-medium text-sm"
+        >
+          青少年
+        </div>
+        <div
+          class="px-6 py-3 bg-primary-light rounded-full text-primary font-medium text-sm"
+        >
+          青年
+        </div>
+        <div
+          class="px-6 py-3 bg-primary-light rounded-full text-primary font-medium text-sm"
+        >
+          家庭
+        </div>
+        <div
+          class="px-6 py-3 bg-primary-light rounded-full text-primary font-medium text-sm"
+        >
+          教育工作者
+        </div>
+        <div
+          class="px-6 py-3 bg-primary-light rounded-full text-primary font-medium text-sm"
+        >
+          专业人士
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,22 @@
+@import 'tailwindcss';
+
+@theme {
+    --color-primary: #2a7a6e;
+    --color-primary-dark: #1f5e54;
+    --color-primary-light: #e8f4f2;
+    --color-secondary: #f5f0eb;
+    --color-accent: #c9a96e;
+    --color-text: #2c3e3a;
+    --color-text-light: #5a716a;
+    --color-text-muted: #8a9e98;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    color: var(--color-text);
+    -webkit-font-smoothing: antialiased;
+}
