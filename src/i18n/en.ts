@@ -13,6 +13,7 @@ export const en: Translation = {
   nav: {
     home: 'Home',
     services: 'Services',
+    president: "President's Message",
     exam: 'Examinations',
   },
   langSwitcher: {
@@ -87,7 +88,7 @@ export const en: Translation = {
         desc: 'Parent-child communication talks, expressive arts workshops, and more',
       },
       {
-        title: 'Academic Exchange',
+        title: 'Academic Exchange & Cooperation',
         desc: 'Research publications, international conferences, and professional networks',
       },
     ],
@@ -264,5 +265,29 @@ export const en: Translation = {
         placeholder: false,
       },
     ],
+  },
+  president: {
+    title: "President's Message",
+    description:
+      'A message from Chen Qian, President of the Hong Kong Child and Youth Mental Health Association.',
+    eyebrow: 'Message',
+    heading: "President's Message",
+    subheading:
+      'Every child deserves to be understood; every soul deserves to be treated with tenderness.',
+    paragraphs: [
+      'I am Chen Qian, President of the Hong Kong Children and Adolescents Mental Health Association. Having lived and worked both overseas and in mainland China, I have seen firsthand two very different educational cultures and social contexts. Schools and communities abroad pay systematic attention to children\'s emotional and psychological well-being. In Hong Kong, by contrast, I often see children silently bearing the weight of academic pressure, family expectations, and social competition — with nowhere to turn.',
+      "As a parent, I know deeply that a child is not a number on a report card, but a living being with emotions, dreams, vulnerabilities, and resilience. I have seen children kept awake at night by exam anxiety, and adolescents who withdraw into silence after being misunderstood. These are not problems that simply \"go away when you grow up\" — they are crises that call for early action, early detection, and gentle companionship.",
+      'The mission of our Association is exactly that: "early detection, public knowledge, and crisis prevention." We do not wait for children to break down before we act. We build a safety net starting from everyday conversations, school programmes, and parental awareness. We offer practical mental health resources, parent workshops, and teacher training, and we partner with community organisations so that support reaches into schools, into homes, and into every corner where a child might feel alone.',
+      'I invite you to walk this path with us. Whether you are a parent, teacher, social worker, or simply a citizen who cares, your attention and action are a light in a child\'s life. Let us stop asking only "What was your score?" and start asking "Are you happy today?" — let us value the child\'s heart over the report card. Because every child deserves to be understood, and every soul deserves to be treated with tenderness.',
+    ],
+    closing: 'Yours sincerely,',
+    closingSalute: '',
+    signatureOrg: 'Hong Kong Children and Adolescents Mental Health Association',
+    signatureName: 'Chen Qian, President',
+    ctaTitle: 'Walk with us',
+    ctaBody:
+      "Whether you are a parent, teacher, social worker, or simply a citizen who cares, your attention and action are a light in a child's life.",
+    ctaServices: 'Explore Our Services',
+    ctaTraining: 'Enquire About Training',
   },
 }

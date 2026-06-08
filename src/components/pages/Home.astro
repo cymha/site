@@ -1,7 +1,12 @@
 ---
-import Layout from '../../layouts/Layout.astro'
+import { Image } from 'astro:assets'
 import { getRelativeLocaleUrl } from 'astro:i18n'
+import trainingProgram from '../../assets/专业培训课程.png'
+import academicExchange from '../../assets/学术交流合作.png'
+import mentalHealthService from '../../assets/心理健康服务.png'
+import workshops from '../../assets/讲座及工作坊.png'
 import { type Locale, t } from '../../i18n'
+import Layout from '../../layouts/Layout.astro'
 
 export interface Props {
   lang: Locale
@@ -9,6 +14,12 @@ export interface Props {
 
 const { lang } = Astro.props
 const tr = t(lang).home
+const cardImages = [
+  mentalHealthService,
+  trainingProgram,
+  workshops,
+  academicExchange,
+]
 ---
 
 <Layout lang={lang} title={tr.title}>
@@ -176,6 +187,11 @@ const tr = t(lang).home
             ]
             return (
               <div class="bg-white rounded-2xl p-6 hover:shadow-lg transition-shadow">
+                <Image
+                  src={cardImages[i]!}
+                  alt={card.title}
+                  class="w-full h-36 object-cover rounded-xl mb-4"
+                />
                 <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                   <svg
                     class="w-6 h-6 text-primary"

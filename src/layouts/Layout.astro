@@ -1,7 +1,9 @@
 ---
 import '../styles/global.css'
+import { Image } from 'astro:assets'
 import { getRelativeLocaleUrl } from 'astro:i18n'
 import LangSwitcher from '../components/LangSwitcher.astro'
+import logo from '../assets/LOGO.jpg'
 import { type Locale, t } from '../i18n'
 import i18n from '../i18n?url'
 
@@ -20,6 +22,7 @@ const nav = tr.nav
 const navItems = [
   { href: getRelativeLocaleUrl(lang, '/'), label: nav.home },
   { href: getRelativeLocaleUrl(lang, '/services'), label: nav.services },
+  { href: getRelativeLocaleUrl(lang, '/president'), label: nav.president },
   { href: getRelativeLocaleUrl(lang, '/exam'), label: nav.exam },
 ]
 
@@ -83,23 +86,11 @@ const normalizedNav = navItems.map((item) => ({
           href={getRelativeLocaleUrl(lang, '/')}
           class="flex items-center gap-3 group"
         >
-          <div
-            class="w-9 h-9 rounded-lg bg-primary flex items-center justify-center shrink-0"
-          >
-            <svg
-              class="w-5 h-5 text-white"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-              ></path>
-            </svg>
-          </div>
+          <Image
+            src={logo}
+            alt={meta.siteName}
+            class="h-9 w-auto object-contain rounded-lg"
+          />
           <span
             class="font-semibold text-text text-sm tracking-wide hidden sm:block"
             >{meta.siteName}</span
@@ -139,23 +130,11 @@ const normalizedNav = navItems.map((item) => ({
         <div class="grid md:grid-cols-3 gap-8 mb-8">
           <div>
             <div class="flex items-center gap-2 mb-4">
-              <div
-                class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center"
-              >
-                <svg
-                  class="w-4 h-4 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                  ></path>
-                </svg>
-              </div>
+              <Image
+                src={logo}
+                alt={meta.siteName}
+                class="h-8 w-auto object-contain rounded-lg"
+              />
               <span class="font-semibold text-white">{meta.siteName}</span>
             </div>
             <p class="text-sm leading-relaxed text-white/60">
