@@ -1,7 +1,7 @@
 ---
 import { getRelativeLocaleUrl } from 'astro:i18n'
-import Layout from '../../layouts/Layout.astro'
 import { type Locale, t } from '../../i18n'
+import Layout from '../../layouts/Layout.astro'
 
 export interface Props {
   lang: Locale
@@ -13,10 +13,10 @@ const tr = t(lang).president
 
 <Layout lang={lang} title={tr.title} description={tr.description}>
   <!-- Hero -->
-  <section class="relative bg-primary-light overflow-hidden">
+  <section class="bg-primary-light relative overflow-hidden">
     <div class="absolute inset-0 opacity-30">
       <svg
-        class="w-full h-full"
+        class="h-full w-full"
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
       >
@@ -35,15 +35,13 @@ const tr = t(lang).president
         <rect width="100" height="100" fill="url(#dots)"></rect>
       </svg>
     </div>
-    <div class="relative max-w-6xl mx-auto px-6 py-20 md:py-28">
+    <div class="relative mx-auto max-w-6xl px-6 py-20 md:py-28">
       <div class="max-w-2xl">
         <span
-          class="text-primary text-sm font-semibold tracking-wider uppercase mb-3 block"
+          class="text-primary mb-3 block text-sm font-semibold tracking-wider uppercase"
           >{tr.eyebrow}</span
         >
-        <h1
-          class="text-3xl md:text-5xl font-bold text-text leading-tight mb-6"
-        >
+        <h1 class="text-text mb-6 text-3xl leading-tight font-bold md:text-5xl">
           {tr.heading}
         </h1>
         <p class="text-text-light text-lg leading-relaxed">
@@ -54,17 +52,17 @@ const tr = t(lang).president
   </section>
 
   <!-- Letter Content -->
-  <section class="py-20 md:py-28 bg-white">
-    <div class="max-w-3xl mx-auto px-6">
+  <section class="bg-white py-20 md:py-28">
+    <div class="mx-auto max-w-3xl px-6">
       <div
-        class="relative bg-white border border-gray-100 rounded-3xl shadow-lg shadow-gray-100/50 overflow-hidden"
+        class="relative overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-lg shadow-gray-100/50"
       >
-        <div class="h-2 bg-primary"></div>
+        <div class="bg-primary h-2"></div>
 
         <div class="p-8 md:p-14">
           <div class="mb-8">
             <svg
-              class="w-12 h-12 text-primary/20"
+              class="text-primary/20 h-12 w-12"
               fill="currentColor"
               viewBox="0 0 24 24"
             >
@@ -74,7 +72,7 @@ const tr = t(lang).president
             </svg>
           </div>
 
-          <div class="space-y-8 text-text-light leading-[1.9] text-lg">
+          <div class="text-text-light space-y-8 text-lg leading-[1.9]">
             {tr.paragraphs.map((para) => <p>{para}</p>)}
             {
               tr.closing && (
@@ -91,16 +89,16 @@ const tr = t(lang).president
             }
           </div>
 
-          <div class="flex items-center justify-center gap-4 my-12">
+          <div class="my-12 flex items-center justify-center gap-4">
             <div
-              class="flex-1 h-px bg-linear-to-r from-transparent to-gray-200"
+              class="h-px flex-1 bg-linear-to-r from-transparent to-gray-200"
             >
             </div>
             <div
-              class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0"
+              class="bg-primary/10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full"
             >
               <svg
-                class="w-5 h-5 text-primary"
+                class="text-primary h-5 w-5"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -114,18 +112,20 @@ const tr = t(lang).president
               </svg>
             </div>
             <div
-              class="flex-1 h-px bg-linear-to-l from-transparent to-gray-200"
+              class="h-px flex-1 bg-linear-to-l from-transparent to-gray-200"
             >
             </div>
           </div>
 
           <div class="flex justify-center">
-            <div class="bg-secondary rounded-2xl p-6 inline-flex items-start gap-4">
+            <div
+              class="bg-secondary inline-flex items-start gap-4 rounded-2xl p-6"
+            >
               <div
-                class="w-14 h-14 rounded-xl bg-primary flex items-center justify-center shrink-0"
+                class="bg-primary flex h-14 w-14 shrink-0 items-center justify-center rounded-xl"
               >
                 <svg
-                  class="w-7 h-7 text-white"
+                  class="h-7 w-7 text-white"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -139,8 +139,10 @@ const tr = t(lang).president
                 </svg>
               </div>
               <div>
-                <p class="text-text-light text-sm mb-1">{tr.signatureOrg}</p>
-                <p class="font-semibold text-text text-lg">{tr.signatureName}</p>
+                <p class="text-text-light mb-1 text-sm">{tr.signatureOrg}</p>
+                <p class="text-text text-lg font-semibold">
+                  {tr.signatureName}
+                </p>
               </div>
             </div>
           </div>
@@ -150,13 +152,13 @@ const tr = t(lang).president
   </section>
 
   <!-- CTA -->
-  <section class="py-20 bg-primary">
-    <div class="max-w-4xl mx-auto px-6 text-center">
+  <section class="bg-primary py-20">
+    <div class="mx-auto max-w-4xl px-6 text-center">
       <div
-        class="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center mx-auto mb-6"
+        class="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10"
       >
         <svg
-          class="w-8 h-8 text-white"
+          class="h-8 w-8 text-white"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -169,22 +171,22 @@ const tr = t(lang).president
           ></path>
         </svg>
       </div>
-      <h2 class="text-2xl md:text-3xl font-bold text-white mb-4">
+      <h2 class="mb-4 text-2xl font-bold text-white md:text-3xl">
         {tr.ctaTitle}
       </h2>
-      <p class="text-white/80 leading-relaxed max-w-2xl mx-auto mb-8">
+      <p class="mx-auto mb-8 max-w-2xl leading-relaxed text-white/80">
         {tr.ctaBody}
       </p>
       <div class="flex flex-wrap justify-center gap-4">
         <a
           href={getRelativeLocaleUrl(lang, '/services')}
-          class="px-8 py-4 bg-white text-primary rounded-xl font-medium hover:bg-gray-50 transition-colors shadow-lg"
+          class="text-primary rounded-xl bg-white px-8 py-4 font-medium shadow-lg transition-colors hover:bg-gray-50"
         >
           {tr.ctaServices}
         </a>
         <a
           href={getRelativeLocaleUrl(lang, '/exam')}
-          class="px-8 py-4 bg-white/10 text-white border border-white/20 rounded-xl font-medium hover:bg-white/20 transition-colors"
+          class="rounded-xl border border-white/20 bg-white/10 px-8 py-4 font-medium text-white transition-colors hover:bg-white/20"
         >
           {tr.ctaTraining}
         </a>

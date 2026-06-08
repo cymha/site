@@ -13,15 +13,15 @@ const tr = t(lang).exam
 <Layout lang={lang} title={tr.title} description={tr.description}>
   <!-- Hero -->
   <section class="bg-primary-light py-16 md:py-24">
-    <div class="max-w-6xl mx-auto px-6">
+    <div class="mx-auto max-w-6xl px-6">
       <span
-        class="text-primary text-sm font-semibold tracking-wider uppercase mb-3 block"
+        class="text-primary mb-3 block text-sm font-semibold tracking-wider uppercase"
         >{tr.eyebrow}</span
       >
-      <h1 class="text-3xl md:text-4xl font-bold text-text mb-4">
+      <h1 class="text-text mb-4 text-3xl font-bold md:text-4xl">
         {tr.heading}
       </h1>
-      <p class="text-text-light text-lg max-w-2xl leading-relaxed">
+      <p class="text-text-light max-w-2xl text-lg leading-relaxed">
         {tr.intro}
       </p>
     </div>
@@ -29,16 +29,16 @@ const tr = t(lang).exam
 
   <!-- Exam Info -->
   <section class="py-20">
-    <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-2xl font-bold text-text mb-8">{tr.infoTitle}</h2>
-      <div class="bg-white border border-gray-100 rounded-2xl overflow-hidden">
+    <div class="mx-auto max-w-4xl px-6">
+      <h2 class="text-text mb-8 text-2xl font-bold">{tr.infoTitle}</h2>
+      <div class="overflow-hidden rounded-2xl border border-gray-100 bg-white">
         {
           tr.examInfo.map((item, i) => (
             <div
-              class={`flex flex-col sm:flex-row sm:items-center px-6 py-4 ${i !== tr.examInfo.length - 1 ? 'border-b border-gray-50' : ''}`}
+              class={`flex flex-col px-6 py-4 sm:flex-row sm:items-center ${i !== tr.examInfo.length - 1 ? 'border-b border-gray-50' : ''}`}
             >
-              <div class="sm:w-40 shrink-0 mb-1 sm:mb-0">
-                <span class="text-sm font-semibold text-text">
+              <div class="mb-1 shrink-0 sm:mb-0 sm:w-40">
+                <span class="text-text text-sm font-semibold">
                   {item.label}
                 </span>
               </div>
@@ -55,14 +55,14 @@ const tr = t(lang).exam
   </section>
 
   <!-- Steps -->
-  <section class="py-20 bg-secondary">
-    <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-2xl font-bold text-text mb-10 text-center">
+  <section class="bg-secondary py-20">
+    <div class="mx-auto max-w-4xl px-6">
+      <h2 class="text-text mb-10 text-center text-2xl font-bold">
         {tr.stepsTitle}
       </h2>
       <div class="relative">
         <div
-          class="absolute left-6 top-0 bottom-0 w-0.5 bg-primary/20 hidden sm:block"
+          class="bg-primary/20 absolute top-0 bottom-0 left-6 hidden w-0.5 sm:block"
         >
         </div>
 
@@ -70,10 +70,10 @@ const tr = t(lang).exam
           {
             tr.steps.map((step, i) => (
               <div class="flex items-start gap-4 sm:gap-6">
-                <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center shrink-0 text-white font-bold text-sm z-10">
+                <div class="bg-primary z-10 flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white">
                   {i + 1}
                 </div>
-                <div class="bg-white rounded-xl p-5 flex-1 shadow-sm">
+                <div class="flex-1 rounded-xl bg-white p-5 shadow-sm">
                   <p class="text-text-light">{step}</p>
                 </div>
               </div>
@@ -86,20 +86,20 @@ const tr = t(lang).exam
 
   <!-- FAQ -->
   <section class="py-20">
-    <div class="max-w-4xl mx-auto px-6">
-      <h2 class="text-2xl font-bold text-text mb-10 text-center">
+    <div class="mx-auto max-w-4xl px-6">
+      <h2 class="text-text mb-10 text-center text-2xl font-bold">
         {tr.faqTitle}
       </h2>
       <div class="space-y-4">
         {
           tr.faqs.map((faq) => (
-            <div class="bg-white border border-gray-100 rounded-2xl p-6">
-              <h3 class="font-semibold text-text mb-3 flex items-start gap-3">
-                <span class="text-primary font-bold shrink-0">Q</span>
+            <div class="rounded-2xl border border-gray-100 bg-white p-6">
+              <h3 class="text-text mb-3 flex items-start gap-3 font-semibold">
+                <span class="text-primary shrink-0 font-bold">Q</span>
                 <span>{faq.question}</span>
               </h3>
               <p
-                class={`text-sm leading-relaxed pl-7 ${faq.placeholder ? 'text-text-muted' : 'text-text-light'}`}
+                class={`pl-7 text-sm leading-relaxed ${faq.placeholder ? 'text-text-muted' : 'text-text-light'}`}
               >
                 {faq.answer}
               </p>
@@ -111,22 +111,22 @@ const tr = t(lang).exam
   </section>
 
   <!-- CTA -->
-  <section class="py-20 bg-primary">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <h2 class="text-2xl font-bold text-white mb-8">{tr.ctaTitle}</h2>
+  <section class="bg-primary py-20">
+    <div class="mx-auto max-w-4xl px-6 text-center">
+      <h2 class="mb-8 text-2xl font-bold text-white">{tr.ctaTitle}</h2>
       <div class="flex flex-wrap justify-center gap-4">
         <button
-          class="px-8 py-4 bg-white text-primary rounded-xl font-medium hover:bg-gray-100 transition-colors"
+          class="text-primary rounded-xl bg-white px-8 py-4 font-medium transition-colors hover:bg-gray-100"
         >
           {tr.ctaApply}
         </button>
         <button
-          class="px-8 py-4 bg-white/10 text-white border border-white/20 rounded-xl font-medium hover:bg-white/20 transition-colors"
+          class="rounded-xl border border-white/20 bg-white/10 px-8 py-4 font-medium text-white transition-colors hover:bg-white/20"
         >
           {tr.ctaEligibility}
         </button>
         <button
-          class="px-8 py-4 bg-white/10 text-white border border-white/20 rounded-xl font-medium hover:bg-white/20 transition-colors"
+          class="rounded-xl border border-white/20 bg-white/10 px-8 py-4 font-medium text-white transition-colors hover:bg-white/20"
         >
           {tr.ctaDetails}
         </button>

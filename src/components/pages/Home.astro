@@ -24,10 +24,10 @@ const cardImages = [
 
 <Layout lang={lang} title={tr.title}>
   <!-- Hero Section -->
-  <section class="relative bg-primary-light overflow-hidden">
+  <section class="bg-primary-light relative overflow-hidden">
     <div class="absolute inset-0 opacity-30">
       <svg
-        class="w-full h-full"
+        class="h-full w-full"
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
       >
@@ -47,25 +47,25 @@ const cardImages = [
       </svg>
     </div>
 
-    <div class="relative max-w-6xl mx-auto px-6 py-24 md:py-32">
+    <div class="relative mx-auto max-w-6xl px-6 py-24 md:py-32">
       <div class="max-w-2xl">
         <div
-          class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 border border-primary/10 text-primary text-xs font-medium mb-6"
+          class="border-primary/10 text-primary mb-6 inline-flex items-center gap-2 rounded-full border bg-white/80 px-3 py-1.5 text-xs font-medium"
         >
-          <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"
+          <span class="bg-primary h-1.5 w-1.5 animate-pulse rounded-full"
           ></span>
           {tr.heroBadge}
         </div>
-        <h1 class="text-4xl md:text-5xl font-bold text-text leading-tight mb-6">
+        <h1 class="text-text mb-6 text-4xl leading-tight font-bold md:text-5xl">
           {tr.heroTitleLine1}<br />{tr.heroTitleLine2}
         </h1>
-        <p class="text-lg text-text-light leading-relaxed mb-8 max-w-xl">
+        <p class="text-text-light mb-8 max-w-xl text-lg leading-relaxed">
           {tr.heroDescription}
         </p>
         <div class="flex flex-wrap gap-3">
           <a
             href={getRelativeLocaleUrl(lang, '/services')}
-            class="px-6 py-3 bg-primary text-white rounded-xl font-medium text-sm hover:bg-primary-dark transition-colors shadow-lg shadow-primary/20"
+            class="bg-primary hover:bg-primary-dark shadow-primary/20 rounded-xl px-6 py-3 text-sm font-medium text-white shadow-lg transition-colors"
           >
             {tr.ctaServices}
           </a>
@@ -76,15 +76,15 @@ const cardImages = [
 
   <!-- About Section -->
   <section class="py-20 md:py-28">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="grid md:grid-cols-2 gap-12 items-start">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="grid items-start gap-12 md:grid-cols-2">
         <div>
           <span
-            class="text-primary text-sm font-semibold tracking-wider uppercase mb-3 block"
+            class="text-primary mb-3 block text-sm font-semibold tracking-wider uppercase"
             >{tr.aboutEyebrow}</span
           >
-          <h2 class="text-3xl font-bold text-text mb-6">{tr.aboutTitle}</h2>
-          <div class="space-y-4 text-text-light leading-relaxed">
+          <h2 class="text-text mb-6 text-3xl font-bold">{tr.aboutTitle}</h2>
+          <div class="text-text-light space-y-4 leading-relaxed">
             <p>{tr.aboutP1}</p>
             <p>{tr.aboutP2}</p>
             <p>{tr.aboutP3}</p>
@@ -95,10 +95,10 @@ const cardImages = [
           <!-- Mission Card -->
           <div class="bg-secondary rounded-2xl p-8">
             <div
-              class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4"
+              class="bg-primary/10 mb-4 flex h-10 w-10 items-center justify-center rounded-xl"
             >
               <svg
-                class="w-5 h-5 text-primary"
+                class="text-primary h-5 w-5"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -110,14 +110,14 @@ const cardImages = [
                   d="M13 10V3L4 14h7v7l9-11h-7z"></path>
               </svg>
             </div>
-            <h3 class="font-semibold text-text text-lg mb-3">
+            <h3 class="text-text mb-3 text-lg font-semibold">
               {tr.missionTitle}
             </h3>
-            <ul class="space-y-2 text-text-light text-sm">
+            <ul class="text-text-light space-y-2 text-sm">
               {
                 tr.missionItems.map((m) => (
                   <li class="flex items-start gap-2">
-                    <span class="w-1 h-1 rounded-full bg-primary mt-2 shrink-0" />
+                    <span class="bg-primary mt-2 h-1 w-1 shrink-0 rounded-full" />
                     <span>{m}</span>
                   </li>
                 ))
@@ -128,10 +128,10 @@ const cardImages = [
           <!-- Values Card -->
           <div class="bg-primary-light rounded-2xl p-8">
             <div
-              class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4"
+              class="bg-primary/10 mb-4 flex h-10 w-10 items-center justify-center rounded-xl"
             >
               <svg
-                class="w-5 h-5 text-primary"
+                class="text-primary h-5 w-5"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -144,17 +144,17 @@ const cardImages = [
                 ></path>
               </svg>
             </div>
-            <h3 class="font-semibold text-text text-lg mb-4">
+            <h3 class="text-text mb-4 text-lg font-semibold">
               {tr.valuesTitle}
             </h3>
             <div class="grid grid-cols-2 gap-3">
               {
                 tr.values.map((v) => (
-                  <div class="bg-white rounded-xl p-4 text-center">
-                    <div class="font-semibold text-primary text-sm mb-1">
+                  <div class="rounded-xl bg-white p-4 text-center">
+                    <div class="text-primary mb-1 text-sm font-semibold">
                       {v.name}
                     </div>
-                    <div class="text-xs text-text-muted">{v.desc}</div>
+                    <div class="text-text-muted text-xs">{v.desc}</div>
                   </div>
                 ))
               }
@@ -166,17 +166,17 @@ const cardImages = [
   </section>
 
   <!-- Services Overview -->
-  <section class="py-20 bg-secondary">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center mb-14">
+  <section class="bg-secondary py-20">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="mb-14 text-center">
         <span
-          class="text-primary text-sm font-semibold tracking-wider uppercase mb-3 block"
+          class="text-primary mb-3 block text-sm font-semibold tracking-wider uppercase"
           >{tr.servicesEyebrow}</span
         >
-        <h2 class="text-3xl font-bold text-text">{tr.servicesTitle}</h2>
+        <h2 class="text-text text-3xl font-bold">{tr.servicesTitle}</h2>
       </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+      <div class="mb-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {
           tr.servicesCards.map((card, i) => {
             const icons = [
@@ -186,15 +186,15 @@ const cardImages = [
               'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
             ]
             return (
-              <div class="bg-white rounded-2xl p-6 hover:shadow-lg transition-shadow">
+              <div class="rounded-2xl bg-white p-6 transition-shadow hover:shadow-lg">
                 <Image
                   src={cardImages[i]!}
                   alt={card.title}
-                  class="w-full h-36 object-cover rounded-xl mb-4"
+                  class="mb-4 h-36 w-full rounded-xl object-cover"
                 />
-                <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                <div class="bg-primary/10 mb-4 flex h-12 w-12 items-center justify-center rounded-xl">
                   <svg
-                    class="w-6 h-6 text-primary"
+                    class="text-primary h-6 w-6"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -207,8 +207,8 @@ const cardImages = [
                     />
                   </svg>
                 </div>
-                <h3 class="font-semibold text-text mb-2">{card.title}</h3>
-                <p class="text-sm text-text-muted leading-relaxed">
+                <h3 class="text-text mb-2 font-semibold">{card.title}</h3>
+                <p class="text-text-muted text-sm leading-relaxed">
                   {card.desc}
                 </p>
               </div>
@@ -220,13 +220,13 @@ const cardImages = [
       <div class="flex flex-wrap justify-center gap-3">
         <a
           href={getRelativeLocaleUrl(lang, '/services')}
-          class="px-6 py-3 bg-primary text-white rounded-xl font-medium text-sm hover:bg-primary-dark transition-colors"
+          class="bg-primary hover:bg-primary-dark rounded-xl px-6 py-3 text-sm font-medium text-white transition-colors"
         >
           {tr.ctaLearnServices}
         </a>
         <a
           href={getRelativeLocaleUrl(lang, '/exam')}
-          class="px-6 py-3 bg-white text-text border border-gray-200 rounded-xl font-medium text-sm hover:bg-gray-50 transition-colors"
+          class="text-text rounded-xl border border-gray-200 bg-white px-6 py-3 text-sm font-medium transition-colors hover:bg-gray-50"
         >
           {tr.ctaInquireTraining}
         </a>
@@ -236,16 +236,16 @@ const cardImages = [
 
   <!-- Target Audience -->
   <section class="py-20">
-    <div class="max-w-4xl mx-auto px-6 text-center">
+    <div class="mx-auto max-w-4xl px-6 text-center">
       <span
-        class="text-primary text-sm font-semibold tracking-wider uppercase mb-3 block"
+        class="text-primary mb-3 block text-sm font-semibold tracking-wider uppercase"
         >{tr.audienceEyebrow}</span
       >
-      <h2 class="text-3xl font-bold text-text mb-8">{tr.audienceTitle}</h2>
+      <h2 class="text-text mb-8 text-3xl font-bold">{tr.audienceTitle}</h2>
       <div class="flex flex-wrap justify-center gap-4">
         {
           tr.audienceTags.map((tag) => (
-            <div class="px-6 py-3 bg-primary-light rounded-full text-primary font-medium text-sm">
+            <div class="bg-primary-light text-primary rounded-full px-6 py-3 text-sm font-medium">
               {tag}
             </div>
           ))

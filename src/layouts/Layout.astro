@@ -1,8 +1,8 @@
 ---
-import '../styles/global.css'
 import { getRelativeLocaleUrl } from 'astro:i18n'
 import LangSwitcher from '../components/LangSwitcher.astro'
 import { defaultLocale, locales, type Locale, t } from '../i18n'
+import '../styles/global.css'
 
 export interface Props {
   lang: Locale
@@ -85,25 +85,25 @@ const normalizedNav = navItems.map((item) => ({
       }
     </script>
   </head>
-  <body class="bg-white min-h-screen flex flex-col">
+  <body class="flex min-h-screen flex-col bg-white">
     <!-- Header -->
     <header
-      class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-primary-light"
+      class="border-primary-light sticky top-0 z-50 border-b bg-white/90 backdrop-blur-md"
     >
       <div
-        class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between gap-4"
+        class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-6"
       >
         <a
           href={getRelativeLocaleUrl(lang, '/')}
-          class="flex items-center gap-3 group"
+          class="group flex items-center gap-3"
         >
           <img
             src="/logo.webp"
             alt={meta.siteName}
-            class="h-9 w-auto object-contain rounded-lg"
+            class="h-9 w-auto rounded-lg object-contain"
           />
           <span
-            class="font-semibold text-text text-sm tracking-wide hidden sm:block"
+            class="text-text hidden text-sm font-semibold tracking-wide sm:block"
             >{meta.siteName}</span
           >
         </a>
@@ -114,7 +114,7 @@ const normalizedNav = navItems.map((item) => ({
               normalizedNav.map((item) => (
                 <a
                   href={item.href}
-                  class={`px-3 sm:px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  class={`rounded-lg px-3 py-2 text-sm font-medium transition-colors sm:px-4 ${
                     item.isActive
                       ? 'bg-primary text-white'
                       : 'text-text-light hover:text-primary hover:bg-primary-light'
@@ -137,14 +137,14 @@ const normalizedNav = navItems.map((item) => ({
 
     <!-- Footer -->
     <footer class="bg-text text-white/80">
-      <div class="max-w-6xl mx-auto px-6 py-12">
-        <div class="grid md:grid-cols-3 gap-8 mb-8">
+      <div class="mx-auto max-w-6xl px-6 py-12">
+        <div class="mb-8 grid gap-8 md:grid-cols-3">
           <div>
-            <div class="flex items-center gap-2 mb-4">
+            <div class="mb-4 flex items-center gap-2">
               <img
                 src="/logo.webp"
                 alt={meta.siteName}
-                class="h-8 w-auto object-contain rounded-lg"
+                class="h-8 w-auto rounded-lg object-contain"
               />
               <span class="font-semibold text-white">{meta.siteName}</span>
             </div>
@@ -154,7 +154,7 @@ const normalizedNav = navItems.map((item) => ({
           </div>
 
           <div>
-            <h4 class="font-semibold text-white mb-4">
+            <h4 class="mb-4 font-semibold text-white">
               {tr.footer.quickLinks}
             </h4>
             <ul class="space-y-2 text-sm">
@@ -163,7 +163,7 @@ const normalizedNav = navItems.map((item) => ({
                   <li>
                     <a
                       href={item.href}
-                      class="text-white/60 hover:text-white transition-colors"
+                      class="text-white/60 transition-colors hover:text-white"
                     >
                       {item.label}
                     </a>
@@ -174,8 +174,8 @@ const normalizedNav = navItems.map((item) => ({
           </div>
 
           <div>
-            <h4 class="font-semibold text-white mb-4">{tr.footer.contact}</h4>
-            <p class="text-sm text-white/60 leading-relaxed">
+            <h4 class="mb-4 font-semibold text-white">{tr.footer.contact}</h4>
+            <p class="text-sm leading-relaxed text-white/60">
               {tr.footer.contactBlurb}
             </p>
           </div>
