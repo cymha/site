@@ -1,5 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro'
+import { Image } from 'astro:assets'
+import 专业培训课程 from './专业培训课程.png'
+import 学术交流合作 from './学术交流合作.png'
+import 心理健康服务 from './心理健康服务.png'
+import 讲座及工作坊 from './讲座及工作坊.png'
 ---
 
 <Layout title="首页">
@@ -182,8 +187,8 @@ import Layout from '../layouts/Layout.astro'
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
         <div class="bg-white rounded-2xl p-6 hover:shadow-lg transition-shadow">
-          <img
-            src="https://placehold.co/400x220/e8f4f2/2a7a6e?text=心理健康服务"
+          <Image
+            src={心理健康服务}
             alt="心理健康服务"
             class="w-full h-36 object-cover rounded-xl mb-4"
           />
@@ -207,8 +212,8 @@ import Layout from '../layouts/Layout.astro'
         </div>
 
         <div class="bg-white rounded-2xl p-6 hover:shadow-lg transition-shadow">
-          <img
-            src="https://placehold.co/400x220/e8f4f2/2a7a6e?text=专业培训课程"
+          <Image
+            src={专业培训课程}
             alt="专业培训课程"
             class="w-full h-36 object-cover rounded-xl mb-4"
           />
@@ -233,8 +238,8 @@ import Layout from '../layouts/Layout.astro'
         </div>
 
         <div class="bg-white rounded-2xl p-6 hover:shadow-lg transition-shadow">
-          <img
-            src="https://placehold.co/400x220/e8f4f2/2a7a6e?text=讲座及工作坊"
+          <Image
+            src={讲座及工作坊}
             alt="讲座及工作坊"
             class="w-full h-36 object-cover rounded-xl mb-4"
           />
@@ -260,8 +265,8 @@ import Layout from '../layouts/Layout.astro'
         </div>
 
         <div class="bg-white rounded-2xl p-6 hover:shadow-lg transition-shadow">
-          <img
-            src="https://placehold.co/400x220/e8f4f2/2a7a6e?text=学术交流合作"
+          <Image
+            src={学术交流合作}
             alt="学术交流合作"
             class="w-full h-36 object-cover rounded-xl mb-4"
           />
