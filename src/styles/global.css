@@ -14,9 +14,3 @@
 html {
     scroll-behavior: smooth;
 }
-
-body {
-    font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-    color: var(--color-text);
-    -webkit-font-smoothing: antialiased;
-}
