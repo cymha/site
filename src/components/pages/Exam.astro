@@ -1,0 +1,136 @@
+---
+import { type Locale, t } from '../../i18n'
+import Layout from '../../layouts/Layout.astro'
+
+export interface Props {
+  lang: Locale
+}
+
+const { lang } = Astro.props
+const tr = t(lang).exam
+---
+
+<Layout lang={lang} title={tr.title} description={tr.description}>
+  <!-- Hero -->
+  <section class="bg-primary-light py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-6">
+      <span
+        class="text-primary text-sm font-semibold tracking-wider uppercase mb-3 block"
+        >{tr.eyebrow}</span
+      >
+      <h1 class="text-3xl md:text-4xl font-bold text-text mb-4">
+        {tr.heading}
+      </h1>
+      <p class="text-text-light text-lg max-w-2xl leading-relaxed">
+        {tr.intro}
+      </p>
+    </div>
+  </section>
+
+  <!-- Exam Info -->
+  <section class="py-20">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-2xl font-bold text-text mb-8">{tr.infoTitle}</h2>
+      <div class="bg-white border border-gray-100 rounded-2xl overflow-hidden">
+        {
+          tr.examInfo.map((item, i) => (
+            <div
+              class={`flex flex-col sm:flex-row sm:items-center px-6 py-4 ${i !== tr.examInfo.length - 1 ? 'border-b border-gray-50' : ''}`}
+            >
+              <div class="sm:w-40 shrink-0 mb-1 sm:mb-0">
+                <span class="text-sm font-semibold text-text">
+                  {item.label}
+                </span>
+              </div>
+              <span
+                class={`text-sm ${item.placeholder ? 'text-text-muted' : 'text-text-light'}`}
+              >
+                {item.value}
+              </span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Steps -->
+  <section class="py-20 bg-secondary">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-2xl font-bold text-text mb-10 text-center">
+        {tr.stepsTitle}
+      </h2>
+      <div class="relative">
+        <div
+          class="absolute left-6 top-0 bottom-0 w-0.5 bg-primary/20 hidden sm:block"
+        >
+        </div>
+
+        <div class="space-y-6">
+          {
+            tr.steps.map((step, i) => (
+              <div class="flex items-start gap-4 sm:gap-6">
+                <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center shrink-0 text-white font-bold text-sm z-10">
+                  {i + 1}
+                </div>
+                <div class="bg-white rounded-xl p-5 flex-1 shadow-sm">
+                  <p class="text-text-light">{step}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-2xl font-bold text-text mb-10 text-center">
+        {tr.faqTitle}
+      </h2>
+      <div class="space-y-4">
+        {
+          tr.faqs.map((faq) => (
+            <div class="bg-white border border-gray-100 rounded-2xl p-6">
+              <h3 class="font-semibold text-text mb-3 flex items-start gap-3">
+                <span class="text-primary font-bold shrink-0">Q</span>
+                <span>{faq.question}</span>
+              </h3>
+              <p
+                class={`text-sm leading-relaxed pl-7 ${faq.placeholder ? 'text-text-muted' : 'text-text-light'}`}
+              >
+                {faq.answer}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-primary">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-2xl font-bold text-white mb-8">{tr.ctaTitle}</h2>
+      <div class="flex flex-wrap justify-center gap-4">
+        <button
+          class="px-8 py-4 bg-white text-primary rounded-xl font-medium hover:bg-gray-100 transition-colors"
+        >
+          {tr.ctaApply}
+        </button>
+        <button
+          class="px-8 py-4 bg-white/10 text-white border border-white/20 rounded-xl font-medium hover:bg-white/20 transition-colors"
+        >
+          {tr.ctaEligibility}
+        </button>
+        <button
+          class="px-8 py-4 bg-white/10 text-white border border-white/20 rounded-xl font-medium hover:bg-white/20 transition-colors"
+        >
+          {tr.ctaDetails}
+        </button>
+      </div>
+    </div>
+  </section>
+</Layout>

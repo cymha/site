@@ -1,34 +1,75 @@
 ---
 import '../styles/global.css'
+import { getRelativeLocaleUrl } from 'astro:i18n'
+import LangSwitcher from '../components/LangSwitcher.astro'
+import { type Locale, t } from '../i18n'
+import i18n from '../i18n?url'
 
 export interface Props {
+  lang: Locale
   title: string
   description?: string
 }
 
-const {
-  title,
-  description = '香港儿童青年心理健康协会 — 连接学术与实践的心理专业平台',
-} = Astro.props
+const { lang, title, description } = Astro.props
+
+const tr = t(lang)
+const meta = tr.meta
+const nav = tr.nav
 
 const navItems = [
-  { href: '/', label: '首页' },
-  { href: '/services', label: '服务' },
-  { href: '/exam', label: '考试报名' },
+  { href: getRelativeLocaleUrl(lang, '/'), label: nav.home },
+  { href: getRelativeLocaleUrl(lang, '/services'), label: nav.services },
+  { href: getRelativeLocaleUrl(lang, '/exam'), label: nav.exam },
 ]
 
-const currentPath = Astro.url.pathname
+const path = Astro.url.pathname
+const normalizedNav = navItems.map((item) => ({
+  ...item,
+  isActive:
+    item.href === '/'
+      ? path === '/'
+      : path === item.href || path === item.href.replace(/\/$/, ''),
+}))
 ---
 
 <!doctype html>
-<html lang="zh-HK">
+<html lang={meta.htmlLang}>
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <meta name="description" content={description} />
-    <title>{title} — 香港儿童青年心理健康协会</title>
+    <meta name="description" content={description ?? meta.siteDescription} />
+    <title>{title} — {meta.titleSuffix}</title>
+    <script is:inline type="module" define:vars={{ i18n, lang, path }}>
+      const { toTarget } = await import(i18n)
+
+      let preferred = localStorage.getItem('cymha:lang')
+      if (preferred === null) {
+        for (const raw of navigator.languages) {
+          const tag = raw.toLowerCase()
+          if (tag.startsWith('en')) {
+            preferred = 'en'
+            break
+          }
+          if (
+            tag.startsWith('zh-hans') ||
+            tag === 'zh-cn' ||
+            tag === 'zh-sg' ||
+            tag === 'zh-my'
+          ) {
+            preferred = 'zh-cn'
+            break
+          }
+          if (tag.startsWith('zh')) {
+            preferred = 'zh-hk'
+          }
+        }
+      }
+
+      if (preferred !== null && preferred !== lang) {
+        location.replace(toTarget(preferred, path))
+      }
+    </script>
   </head>
   <body class="bg-white min-h-screen flex flex-col">
     <!-- Header -->
@@ -36,11 +77,14 @@ const currentPath = Astro.url.pathname
       class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-primary-light"
     >
       <div
-        class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between"
+        class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between gap-4"
       >
-        <a href="/" class="flex items-center gap-3 group">
+        <a
+          href={getRelativeLocaleUrl(lang, '/')}
+          class="flex items-center gap-3 group"
+        >
           <div
-            class="w-9 h-9 rounded-lg bg-primary flex items-center justify-center"
+            class="w-9 h-9 rounded-lg bg-primary flex items-center justify-center shrink-0"
           >
             <svg
               class="w-5 h-5 text-white"
@@ -58,26 +102,29 @@ const currentPath = Astro.url.pathname
           </div>
           <span
             class="font-semibold text-text text-sm tracking-wide hidden sm:block"
-            >香港儿童青年心理健康协会</span
+            >{meta.siteName}</span
           >
         </a>
 
-        <nav class="flex items-center gap-1">
-          {
-            navItems.map((item) => (
-              <a
-                href={item.href}
-                class={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  currentPath === item.href
-                    ? 'bg-primary text-white'
-                    : 'text-text-light hover:text-primary hover:bg-primary-light'
-                }`}
-              >
-                {item.label}
-              </a>
-            ))
-          }
-        </nav>
+        <div class="flex items-center gap-1">
+          <nav class="flex items-center gap-1">
+            {
+              normalizedNav.map((item) => (
+                <a
+                  href={item.href}
+                  class={`px-3 sm:px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    item.isActive
+                      ? 'bg-primary text-white'
+                      : 'text-text-light hover:text-primary hover:bg-primary-light'
+                  }`}
+                >
+                  {item.label}
+                </a>
+              ))
+            }
+          </nav>
+          <LangSwitcher lang={lang} currentPath={path} />
+        </div>
       </div>
     </header>
 
@@ -109,17 +156,17 @@ const currentPath = Astro.url.pathname
                   ></path>
                 </svg>
               </div>
-              <span class="font-semibold text-white"
-                >香港儿童青年心理健康协会</span
-              >
+              <span class="font-semibold text-white">{meta.siteName}</span>
             </div>
             <p class="text-sm leading-relaxed text-white/60">
-              连接学术与实践的心理专业平台，整合社会资源，全面促进儿童及青年的心理健康。
+              {tr.footer.aboutBlurb}
             </p>
           </div>
 
           <div>
-            <h4 class="font-semibold text-white mb-4">快速链接</h4>
+            <h4 class="font-semibold text-white mb-4">
+              {tr.footer.quickLinks}
+            </h4>
             <ul class="space-y-2 text-sm">
               {
                 navItems.map((item) => (
@@ -137,9 +184,9 @@ const currentPath = Astro.url.pathname
           </div>
 
           <div>
-            <h4 class="font-semibold text-white mb-4">联系我们</h4>
+            <h4 class="font-semibold text-white mb-4">{tr.footer.contact}</h4>
             <p class="text-sm text-white/60 leading-relaxed">
-              如需咨询或预约服务，欢迎与我们取得联系。
+              {tr.footer.contactBlurb}
             </p>
           </div>
         </div>
@@ -147,7 +194,8 @@ const currentPath = Astro.url.pathname
         <div
           class="border-t border-white/10 pt-8 text-center text-xs text-white/40"
         >
-          © {new Date().getFullYear()} 香港儿童青年心理健康协会. All rights reserved.
+          © {new Date().getFullYear()}
+          {meta.siteName}. {tr.footer.rights}
         </div>
       </div>
     </footer>

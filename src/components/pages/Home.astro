@@ -1,0 +1,240 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import { getRelativeLocaleUrl } from 'astro:i18n'
+import { type Locale, t } from '../../i18n'
+
+export interface Props {
+  lang: Locale
+}
+
+const { lang } = Astro.props
+const tr = t(lang).home
+---
+
+<Layout lang={lang} title={tr.title}>
+  <!-- Hero Section -->
+  <section class="relative bg-primary-light overflow-hidden">
+    <div class="absolute inset-0 opacity-30">
+      <svg
+        class="w-full h-full"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+      >
+        <defs>
+          <pattern
+            id="dots"
+            x="0"
+            y="0"
+            width="20"
+            height="20"
+            patternUnits="userSpaceOnUse"
+          >
+            <circle cx="2" cy="2" r="1" fill="#2a7a6e" opacity="0.15"></circle>
+          </pattern>
+        </defs>
+        <rect width="100" height="100" fill="url(#dots)"></rect>
+      </svg>
+    </div>
+
+    <div class="relative max-w-6xl mx-auto px-6 py-24 md:py-32">
+      <div class="max-w-2xl">
+        <div
+          class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/80 border border-primary/10 text-primary text-xs font-medium mb-6"
+        >
+          <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"
+          ></span>
+          {tr.heroBadge}
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold text-text leading-tight mb-6">
+          {tr.heroTitleLine1}<br />{tr.heroTitleLine2}
+        </h1>
+        <p class="text-lg text-text-light leading-relaxed mb-8 max-w-xl">
+          {tr.heroDescription}
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a
+            href={getRelativeLocaleUrl(lang, '/services')}
+            class="px-6 py-3 bg-primary text-white rounded-xl font-medium text-sm hover:bg-primary-dark transition-colors shadow-lg shadow-primary/20"
+          >
+            {tr.ctaServices}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="py-20 md:py-28">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid md:grid-cols-2 gap-12 items-start">
+        <div>
+          <span
+            class="text-primary text-sm font-semibold tracking-wider uppercase mb-3 block"
+            >{tr.aboutEyebrow}</span
+          >
+          <h2 class="text-3xl font-bold text-text mb-6">{tr.aboutTitle}</h2>
+          <div class="space-y-4 text-text-light leading-relaxed">
+            <p>{tr.aboutP1}</p>
+            <p>{tr.aboutP2}</p>
+            <p>{tr.aboutP3}</p>
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          <!-- Mission Card -->
+          <div class="bg-secondary rounded-2xl p-8">
+            <div
+              class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4"
+            >
+              <svg
+                class="w-5 h-5 text-primary"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-text text-lg mb-3">
+              {tr.missionTitle}
+            </h3>
+            <ul class="space-y-2 text-text-light text-sm">
+              {
+                tr.missionItems.map((m) => (
+                  <li class="flex items-start gap-2">
+                    <span class="w-1 h-1 rounded-full bg-primary mt-2 shrink-0" />
+                    <span>{m}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+
+          <!-- Values Card -->
+          <div class="bg-primary-light rounded-2xl p-8">
+            <div
+              class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4"
+            >
+              <svg
+                class="w-5 h-5 text-primary"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-text text-lg mb-4">
+              {tr.valuesTitle}
+            </h3>
+            <div class="grid grid-cols-2 gap-3">
+              {
+                tr.values.map((v) => (
+                  <div class="bg-white rounded-xl p-4 text-center">
+                    <div class="font-semibold text-primary text-sm mb-1">
+                      {v.name}
+                    </div>
+                    <div class="text-xs text-text-muted">{v.desc}</div>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Overview -->
+  <section class="py-20 bg-secondary">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <span
+          class="text-primary text-sm font-semibold tracking-wider uppercase mb-3 block"
+          >{tr.servicesEyebrow}</span
+        >
+        <h2 class="text-3xl font-bold text-text">{tr.servicesTitle}</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        {
+          tr.servicesCards.map((card, i) => {
+            const icons = [
+              'M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z',
+              'M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253',
+              'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z',
+              'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
+            ]
+            return (
+              <div class="bg-white rounded-2xl p-6 hover:shadow-lg transition-shadow">
+                <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                  <svg
+                    class="w-6 h-6 text-primary"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d={icons[i]}
+                    />
+                  </svg>
+                </div>
+                <h3 class="font-semibold text-text mb-2">{card.title}</h3>
+                <p class="text-sm text-text-muted leading-relaxed">
+                  {card.desc}
+                </p>
+              </div>
+            )
+          })
+        }
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-3">
+        <a
+          href={getRelativeLocaleUrl(lang, '/services')}
+          class="px-6 py-3 bg-primary text-white rounded-xl font-medium text-sm hover:bg-primary-dark transition-colors"
+        >
+          {tr.ctaLearnServices}
+        </a>
+        <a
+          href={getRelativeLocaleUrl(lang, '/exam')}
+          class="px-6 py-3 bg-white text-text border border-gray-200 rounded-xl font-medium text-sm hover:bg-gray-50 transition-colors"
+        >
+          {tr.ctaInquireTraining}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Target Audience -->
+  <section class="py-20">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <span
+        class="text-primary text-sm font-semibold tracking-wider uppercase mb-3 block"
+        >{tr.audienceEyebrow}</span
+      >
+      <h2 class="text-3xl font-bold text-text mb-8">{tr.audienceTitle}</h2>
+      <div class="flex flex-wrap justify-center gap-4">
+        {
+          tr.audienceTags.map((tag) => (
+            <div class="px-6 py-3 bg-primary-light rounded-full text-primary font-medium text-sm">
+              {tag}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>

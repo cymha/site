@@ -1,0 +1,70 @@
+---
+import { type Locale, locales, t, toTarget } from '../i18n'
+
+export interface Props {
+  lang: Locale
+  currentPath: string
+}
+
+const { lang, currentPath } = Astro.props
+
+const labels: Record<Locale, string> = {
+  en: t(lang).langSwitcher.en,
+  'zh-cn': t(lang).langSwitcher.zhCN,
+  'zh-hk': t(lang).langSwitcher.zhHK,
+}
+---
+
+<div class="relative group">
+  <button
+    type="button"
+    class="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium text-text-light hover:text-primary hover:bg-primary-light transition-colors"
+    aria-haspopup="true"
+  >
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"
+      ></path>
+    </svg>
+    <span>{labels[lang]}</span>
+    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M19 9l-7 7-7-7"></path>
+    </svg>
+  </button>
+  <div
+    class="absolute right-0 top-full mt-1 w-40 bg-white border border-gray-100 rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible focus-within:opacity-100 focus-within:visible transition-all py-1 z-50"
+  >
+    {
+      locales.map((l) => (
+        <a
+          href={toTarget(l, currentPath)}
+          class={`lang-switcher-link block px-4 py-2 text-sm transition-colors ${
+            l === lang
+              ? 'text-primary font-semibold bg-primary-light/50'
+              : 'text-text-light hover:text-primary hover:bg-primary-light'
+          }`}
+          hreflang={l}
+        >
+          {labels[l]}
+        </a>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  document
+    .querySelectorAll('.lang-switcher-link')
+    .forEach((el) =>
+      el.addEventListener('click', () =>
+        localStorage.setItem('cymha:lang', (el as HTMLAnchorElement).hreflang),
+      ),
+    )
+</script>
