@@ -1,11 +1,8 @@
 ---
 import '../styles/global.css'
-import { Image } from 'astro:assets'
 import { getRelativeLocaleUrl } from 'astro:i18n'
 import LangSwitcher from '../components/LangSwitcher.astro'
-import logo from '../assets/LOGO.jpg'
-import { type Locale, t } from '../i18n'
-import i18n from '../i18n?url'
+import { defaultLocale, locales, type Locale, t } from '../i18n'
 
 export interface Props {
   lang: Locale
@@ -41,10 +38,24 @@ const normalizedNav = navItems.map((item) => ({
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="description" content={description ?? meta.siteDescription} />
     <title>{title} — {meta.titleSuffix}</title>
-    <script is:inline type="module" define:vars={{ i18n, lang, path }}>
-      const { toTarget } = await import(i18n)
+    <meta name="description" content={description ?? meta.siteDescription} />
+    <link rel="icon" href="/logo.webp" />
+    <script is:inline define:vars={{ lang, path, locales, defaultLocale }}>
+      function toTarget(target, originalPath) {
+        let stripped = originalPath
+        for (const locale of locales) {
+          if (originalPath.startsWith(`/${locale}`)) {
+            stripped = originalPath.replace(`/${locale}`, '')
+            break
+          }
+        }
+
+        if (stripped === '/' || stripped === '') {
+          return target === defaultLocale ? '/' : `/${target}`
+        }
+        return `/${target}${stripped}`
+      }
 
       let preferred = localStorage.getItem('cymha:lang')
       if (preferred === null) {
@@ -86,8 +97,8 @@ const normalizedNav = navItems.map((item) => ({
           href={getRelativeLocaleUrl(lang, '/')}
           class="flex items-center gap-3 group"
         >
-          <Image
-            src={logo}
+          <img
+            src="/logo.webp"
             alt={meta.siteName}
             class="h-9 w-auto object-contain rounded-lg"
           />
@@ -130,8 +141,8 @@ const normalizedNav = navItems.map((item) => ({
         <div class="grid md:grid-cols-3 gap-8 mb-8">
           <div>
             <div class="flex items-center gap-2 mb-4">
-              <Image
-                src={logo}
+              <img
+                src="/logo.webp"
                 alt={meta.siteName}
                 class="h-8 w-auto object-contain rounded-lg"
               />
