@@ -29,6 +29,16 @@ export const en: Translation = {
     contact: 'Contact Us',
     contactBlurb:
       'For enquiries or to book a service, please get in touch with us.',
+    contactPhone: '+852 46804794 (WhatsApp)',
+    contactEmail: 'info@cymha.org',
+    contactHoursHeading: 'Opening Hours',
+    contactHours: [
+      'Monday – Friday: 10:00 AM – 6:00 PM',
+      'Saturday: 10:00 AM – 2:00 PM',
+      'Sunday & Public Holidays: Closed',
+    ],
+    contactAddress:
+      'Unit 1101-1102, 11/F, K. Wah Centre, 191 Java Road, North Point, Hong Kong',
     rights: 'All rights reserved.',
   },
   home: {
