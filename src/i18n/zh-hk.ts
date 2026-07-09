@@ -26,6 +26,15 @@ export const zhHK: Translation = {
     quickLinks: '快速連結',
     contact: '聯絡我們',
     contactBlurb: '如需諮詢或預約服務，歡迎與我們取得聯絡。',
+    contactPhone: '+852 46804794 (WhatsApp)',
+    contactEmail: 'info@cymha.org',
+    contactHoursHeading: '辦公時間',
+    contactHours: [
+      '星期一至星期五：上午10:00 – 下午6:00',
+      '星期六：上午10:00 – 下午2:00',
+      '星期日及公眾假期休息',
+    ],
+    contactAddress: '香港北角渣華道191號嘉華國際中心11樓1101-1102室',
     rights: '版權所有',
   },
   home: {
